@@ -1,7 +1,13 @@
 from django.conf.urls import url
 
-from . import views
+from .views import (
+	index,
+	shift_pick_up_view,
+	shift_release_view,
+	staff_view,
+	account_view,
+)
 
 urlpatterns = [
-	url(r'^$', views.index, name='index'),
+	url(r'^$', index, name='index'),
 ]
