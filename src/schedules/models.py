@@ -4,7 +4,6 @@ import datetime
 
 # Create your models here.
 
-
 class User(models.Model):
 	first_name = models.CharField(max_length=50)
 	last_name = models.CharField(max_length=50)
@@ -14,6 +13,16 @@ class User(models.Model):
 
 	def __str__(self):
 		return(self.first_name + " " + self.last_name)
+
+class News_Messages(models.Model):
+	user = models.ForeignKey(User, on_delete=models.CASCADE)
+	title = models.CharField(max_length = 500)
+	content = models.TextField()
+	publish_date = models.DateTimeField(
+		default = timezone.now,
+	)
+	def __str__(self):
+		return(self.title)
 
 class Shift(models.Model):
 	user = models.ForeignKey(User, on_delete=models.CASCADE)
