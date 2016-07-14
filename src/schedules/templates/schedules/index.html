@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>BearForce</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>	
+
+</head>
+<body>
+
+	<nav class="nav navbar-inverse">
+		<div class="container-fluid">
+
+			<!-- logo -->
+			<div class="navbar-header">
+				<a href="#" class="navbar-brand">BEARFORCE</a>
+			</div>
+
+			<!-- Menu Items -->
+			<div>
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#">Home</a></li>
+			
+					<!-- dropdown -->
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Schedule <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Release</a></li>
+							<li><a href="#">Pick Up</a></li>
+						</ul>
+					</li>
+
+					<li><a href="#">Staff</a></li>
+					<li><a href="#">Account</a></li>
+				</ul>
+			</div>
+
+		</div>
+	</nav>
+
+	<h1>Welcome {{ bearforce_worker.first_name }}</h1>
+
+	<h3>You need to work the following shifts this week</h3>
+
+	{% for shift in shifts_to_work %}
+		<p>{{ shift }}</p>
+	{% endfor %}
+
+</body>
+</html>

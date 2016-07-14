@@ -5,10 +5,15 @@ from .models import User, News_Messages, Shift
 
 # Create your views here.
 
-def home(request):
-	latest_mn = News_Messages.objects.all()
-	output = "***".join(nm.title for nm in latest_mn)
-	return HttpResponse(output)
+def index(request):
+	bearforce_worker = User.objects.get(pk=1)
+	shifts_to_work = bearforce_worker.shift_set.all()
+	context= {
+		"shifts_to_work": shifts_to_work,
+		"bearforce_worker": bearforce_worker,
+	}
+	#get_object_or_404
+	return render(request, 'schedules/index.html', context)
 
 def shift_pick_up(request):
 	return HttpResponse("Hello, shift pickup view is working.")
