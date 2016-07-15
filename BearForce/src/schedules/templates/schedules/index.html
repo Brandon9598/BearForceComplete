@@ -13,7 +13,7 @@
 
 </head>
 <body>
-
+	<!-- Navigation Bar -->
 	<nav class="nav navbar-inverse">
 		<div class="container-fluid">
 
@@ -43,14 +43,42 @@
 
 		</div>
 	</nav>
+	
+	<!-- Welcome User -->
+	<div class="welcome">
+		<h1>Welcome {{ bearforce_worker.first_name }}</h1>
+	</div>
+	
+	<!-- Messaging content -->
+	<div class="messages">
+		<h3>News and Messages</h3>
+		{% for nm in bearforce_messages %}
+			<p> {{ nm }} </p>
+		{% endfor %}
+	</div>
+	
+	<div class="create new message">
+		<form action="{% url 'schedules:new_message' %}" method="post">
+			{% csrf_token %}
+			Title:
+			<input type="text" name="title" size="50">
+			</br>
+			Content:
+			<textarea cols="50" rows="5">
+			</textarea>
+			</br>
+			<input type="submit" value="new message">
+		</form>
+	</div>
+	
+	<!-- Scheduling content -->
+	<div class="scheduling">
+		<h3>You need to work the following shifts this week</h3>
 
-	<h1>Welcome {{ bearforce_worker.first_name }}</h1>
-
-	<h3>You need to work the following shifts this week</h3>
-
-	{% for shift in shifts_to_work %}
-		<p>{{ shift }}</p>
-	{% endfor %}
+		{% for shift in shifts_to_work %}
+			<p>{{ shift }}</p>
+		{% endfor %}
+	</div>
 
 </body>
 </html>
