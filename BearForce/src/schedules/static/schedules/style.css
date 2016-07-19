@@ -77,3 +77,18 @@ body {
 #NewsMessages {
 	color: black;
 }
+
+
+.btn-default{
+	background-color: #DA5906;
+	color: black;
+}
+
+.btn-default:hover {
+	background-color: #DA5906;
+	color: black;	
+}
+
+#available_shifts {
+	border: 0px;
+}

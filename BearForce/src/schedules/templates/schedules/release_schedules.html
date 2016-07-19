@@ -1,20 +1,12 @@
 {% extends 'schedules/base.html' %}
 {% block body %}
 
-
-
-	{% for shift in shifts_to_work %}
-		{{ shift }}
-		<br/>
-	{% endfor %}
-
-
 	<!-- Release Schedule Table -->
 	<div class="panel panel-default">
-		<div class="panel-heading">Available Shifts to Release
-		</div>
+		<div class="panel-heading" id="available_shifts">Available Shifts to Release</div>
 		<table class="table">
 			<tr>
+				<td></td>
 				<td>Name</td>
 				<td>Time</td>
 				<td>Date</td>
@@ -23,20 +15,29 @@
 			</tr>
 			{% for shift in shifts_to_work %}
 			<tr>
+				<td>
+					<div class="checkbox">
+					  <label>
+					    <input type="checkbox" data-toggle="toggle selected">
+					  </label>
+					</div>
+				</td>
 				<td>{{ shift.user.first_name }} {{ shift.user.last_name }}</td>
 				<td>{{ shift.time }}</td>
 				<td>{{ shift.date }}</td>
-				<td>{{ shfit.working_location }}</td>
-				<td>{{ shift.reason }}</td>
+				<td>{{ shift.working_location }}</td>
+				<td>{{ shift.release_reason }}</td>
 			</tr>
 			{% endfor %}	
 		</table>
 	</div>
 
+	<input type="submit" class="btn-default" value="Release Shifts">
 
 
 
 
 
 
-{% endblock %}
+
+{% endblock %}	

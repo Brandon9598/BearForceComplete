@@ -76,10 +76,10 @@ class Shift(models.Model):
 		default= SHIFT_PM_12,
 	)
 
-	BOXOFFICE = 'BO'
-	MAINDESK = 'MD' 
-	FITNESSCENTER = "FC"
-	EQUIPMENTCHECKOUT = 'EC'
+	BOXOFFICE = 'Box Office'
+	MAINDESK = 'Main Desk' 
+	FITNESSCENTER = "Fitness Center"
+	EQUIPMENTCHECKOUT = 'Equipment Checkout'
 	LOCATIONS_TO_WORK = (
 		(BOXOFFICE, "Box Office"),
 		(MAINDESK, "Main Desk"),
@@ -88,7 +88,7 @@ class Shift(models.Model):
 	)
 
 	working_location = models.CharField(
-		max_length=2, 
+		max_length=20, 
 		choices=LOCATIONS_TO_WORK,
 		default=MAINDESK,
 	)
@@ -107,7 +107,8 @@ class Shift(models.Model):
 		default = PERMANENTSHIFT,
 	)
 
-	release_reason = models.TextField()
+	release_reason = models.TextField(
+		default="Blank")
 	
 	release_shift_temp = False
 	release_shift_perm = False
