@@ -1,0 +1,75 @@
+/* 
+important colors:
+#CB5307 - mercer dark color
+#C2C0C2 - silver
+#FE650E - safety orange
+#CB4900 - safety orange compliment
+#363436 - jet
+#5E5C5E - ebony
+#E8E8EE - very light grey
+#f4eee5 - mercer background filler
+#C95106 - mercer title bar color
+
+new color scheme:
+#E45D07 - topbar
+#DA5906 - topbar compliment
+*/
+
+body {
+	background-color: white;
+}
+
+.navbar {
+	border-radius: 0px;
+}
+
+.navbar-inverse {
+	background-color: #E45D07;
+}
+
+.navbar-inverse {
+	color: white;
+}
+
+.navbar-inverse .navbar-header a {
+	color: white;
+}
+
+.navbar-inverse .navbar-nav >li >a {
+	color: white;
+}
+
+.navbar-inverse .navbar-nav > .active > a {
+	background: black;
+}
+
+.navbar-fixed-side {
+	background-color: #DA5906;
+	margin-top: 20px;
+	margin-bottom: 3px;
+	padding-left: 30px;
+}
+
+.panel-default {
+	border-radius: 0px;
+	margin-bottom: 4px;
+}
+
+.panel-default .panel-heading {
+	background-color: #DA5906;
+	color: black;
+	border-radius: 0px;
+}
+
+.panel-default .panel-body {
+	padding: 5px;
+	background-color: #f4eee5;
+}
+
+.welcome h1 {
+	margin-top: 15px;
+}
+
+#NewsMessages {
+	color: black;
+}

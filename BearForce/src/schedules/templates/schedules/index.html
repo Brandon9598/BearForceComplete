@@ -1,84 +1,60 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>BearForce</title>
-	<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-	
-	<!-- jQuery library -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+{% extends 'schedules/base.html' %}
+{% block body %}
 
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>	
-
-</head>
-<body>
-	<!-- Navigation Bar -->
-	<nav class="nav navbar-inverse">
-		<div class="container-fluid">
-
-			<!-- logo -->
-			<div class="navbar-header">
-				<a href="#" class="navbar-brand">BEARFORCE</a>
+	<!-- Side bar -->
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3 col-lg-2">
+				<nav class="navbar navbar-default navbar-fixed-side">
+					<div class="navbar-header">
+						<a class="navbar-brand" id="NewsMessages" href="#">News & Messages</a>
+					</div>			
+				</nav>
+				<div class="panel panel-default">
+					<div class="panel-heading">Available shifts: <span class="badge">6</span></div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">First entry title:</div>
+					<div class="panel-body">
+						<p class="date"><small>7/18/16</small></p>
+						<p>This is content for the first post</p>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">Second entry:</div>
+					<div class="panel-body">
+						<p class="date"><small>7/18/16</small></p>
+						<p>This is content for the first post</p>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">Third entry:</div>
+					<div class="panel-body">
+						<p class="date"><small>7/18/16</small></p>
+						<p>This is content for the first post</p>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">Fourth entry:</div>
+					<div class="panel-body">
+						<p class="date"><small>7/18/16</small></p>
+						<p>This is content for the first post</p>
+					</div>
+				</div>
 			</div>
-
-			<!-- Menu Items -->
-			<div>
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Home</a></li>
 			
-					<!-- dropdown -->
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Schedule <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Release</a></li>
-							<li><a href="#">Pick Up</a></li>
-						</ul>
-					</li>
-
-					<li><a href="#">Staff</a></li>
-					<li><a href="#">Account</a></li>
-				</ul>
-			</div>
-
+			<div class="col-sm-8 col-lg-9">
+				<!-- Welcome User -->
+				<div class="welcome">
+					<h1>Welcome {{ bearforce_worker.first_name }}</h1>
+				</div>
+				
+				<!-- Scheduling content -->
+				<div class="scheduling">					
+					<div id="calendar"></div>					
+				</div>
+			</div>		
 		</div>
-	</nav>
-	
-	<!-- Welcome User -->
-	<div class="welcome">
-		<h1>Welcome {{ bearforce_worker.first_name }}</h1>
-	</div>
-	
-	<!-- Messaging content -->
-	<div class="messages">
-		<h3>News and Messages</h3>
-		{% for nm in bearforce_messages %}
-			<p> {{ nm }} </p>
-		{% endfor %}
-	</div>
-	
-	<div class="create new message">
-		<form action="{% url 'schedules:new_message' %}" method="post">
-			{% csrf_token %}
-			Title:
-			<input type="text" name="title" size="50">
-			</br>
-			Content:
-			<textarea cols="50" rows="5">
-			</textarea>
-			</br>
-			<input type="submit" value="new message">
-		</form>
-	</div>
-	
-	<!-- Scheduling content -->
-	<div class="scheduling">
-		<h3>You need to work the following shifts this week</h3>
-
-		{% for shift in shifts_to_work %}
-			<p>{{ shift }}</p>
-		{% endfor %}
 	</div>
 
-</body>
-</html>
+{% endblock %}

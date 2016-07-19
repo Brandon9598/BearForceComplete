@@ -9,7 +9,10 @@
 
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>	
-	<link rel="stylesheet" type="text/css" href="temp_style.css">
+	<link rel="stylesheet" type="text/css" href={% static 'schedules/style.css' %}>
+	<link rel="stylesheet" type="text/css" href={% static 'schedules/calendar_style.css' %}>
+	<script src="{% static 'schedules/calendar.js' %}"></script>	
+	
 </head>
 <body>
 	<!-- Navigation Bar -->
@@ -19,7 +22,7 @@
 			<!-- logo -->
 			<div class="navbar-header">
 				<!-- Change Font -->
-				<a href="#" class="navbar-brand">BEAR FORCE</a>
+				<a href="{% url 'index' %}" class="navbar-brand">BEAR FORCE</a>
 			</div>
 
 			<!-- Menu Items -->
@@ -31,11 +34,12 @@
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Schedule<span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">Release</a></li>
-							<li><a href="#">Pick Up</a></li>
+							<li><a href="/release.html/">Release</a></li>
+							<li><a href="shift_pick_up">Pick Up</a></li>
 						</ul>
 					</li>
-
+					
+					<li><a href="{% url 'new_message' %}">Messages</a></li>
 					<li><a href="#">Staff</a></li>
 					<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Account<span class="caret"></span></a>

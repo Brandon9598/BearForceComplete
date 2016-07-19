@@ -1,0 +1,13 @@
+<div class="create new message">
+	<form action="{% url 'schedules:new_message' %}" method="post">
+		{% csrf_token %}
+		Title:
+		<input type="text" name="title" size="50">
+		</br>
+		Content:
+		<textarea cols="50" rows="5">
+		</textarea>
+		</br>
+		<input type="submit" value="new message">
+	</form>
+</div>

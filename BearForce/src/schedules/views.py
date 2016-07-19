@@ -21,7 +21,14 @@ def new_message(request):
 	return HttpResponse("Hello, new message view is working.")
 	
 def shift_pick_up(request):
-	return HttpResponse("Hello, shift pickup view is working.")
+	available_shifts = []
+	for shift in Shift.objects.all():
+		if (shift.release_shift_temp or shift.release_shift_perm):
+			available_shifts.append(shift)
+	context = {
+		"available_shifts": available_shifts,
+	}
+	return render(request, 'schedules/pick_up_schedules.html', context)
 
 def shift_release(request):
 	return HttpResponse("Hello, shift release view is working.")

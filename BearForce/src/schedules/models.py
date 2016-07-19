@@ -106,6 +106,9 @@ class Shift(models.Model):
 		choices = SHIFTS_SPECIFICATION,
 		default = PERMANENTSHIFT,
 	)
+	
+	release_shift_temp = False
+	release_shift_perm = False
 
 	
 
