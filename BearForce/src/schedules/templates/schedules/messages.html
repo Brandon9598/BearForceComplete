@@ -1,7 +1,16 @@
-<!-- Messaging content -->
-<div class="messages">
-	<h3>News and Messages</h3>
-	{% for nm in bearforce_messages %}
-		<p> {{ nm }} </p>
-	{% endfor %}
-</div
+{% extends 'base.html' %}
+{% block body %}
+
+	<!-- Messaging content -->
+	<div class="container">
+		<div class="row">
+			<div id="messages" class="col-md-8 text-center">
+				<h3>News and Messages</h3>
+				{% for nm in bearforce_messages %}
+					<p> {{ nm }} </p>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
