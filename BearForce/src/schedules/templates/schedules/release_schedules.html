@@ -3,10 +3,36 @@
 
 
 
-{% for shift in shifts_to_work %}
-	{{ shift }}
-	<br/>
-{% endfor %}
+	{% for shift in shifts_to_work %}
+		{{ shift }}
+		<br/>
+	{% endfor %}
+
+
+	<!-- Release Schedule Table -->
+	<div class="panel panel-default">
+		<div class="panel-heading">Available Shifts to Release
+		</div>
+		<table class="table">
+			<tr>
+				<td>Name</td>
+				<td>Time</td>
+				<td>Date</td>
+				<td>Location</td>
+				<td>Reason</td>
+			</tr>
+			{% for shift in shifts_to_work %}
+			<tr>
+				<td>{{ shift.user.first_name }} {{ shift.user.last_name }}</td>
+				<td>{{ shift.time }}</td>
+				<td>{{ shift.date }}</td>
+				<td>{{ shfit.working_location }}</td>
+				<td>{{ shift.reason }}</td>
+			</tr>
+			{% endfor %}	
+		</table>
+	</div>
+
 
 
 

@@ -106,6 +106,8 @@ class Shift(models.Model):
 		choices = SHIFTS_SPECIFICATION,
 		default = PERMANENTSHIFT,
 	)
+
+	release_reason = models.TextField()
 	
 	release_shift_temp = False
 	release_shift_perm = False
