@@ -31,7 +31,13 @@ def shift_pick_up(request):
 	return render(request, 'schedules/pick_up_schedules.html', context)
 
 def shift_release(request):
-	return HttpResponse("Hello, shift release view is working.")
+	bearforce_worker = User.objects.get(pk=1)
+	shifts_to_work = bearforce_worker.shift_set.all()
+	context = {
+		"shifts_to_work": shifts_to_work,
+		"bearforce_worker": bearforce_worker,
+	}
+	return render(request, 'schedules/release_schedules.html', context)
 
 def staff(request):
 	return HttpResponse("Hello, staff view is working.")
