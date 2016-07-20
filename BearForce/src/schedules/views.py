@@ -27,7 +27,7 @@ def messages(request):
 def shift_pick_up(request):
 	available_shifts = []
 	for shift in Shift.objects.all():
-		if (shift.release_shift_temp or shift.release_shift_perm):
+		if ((shift.type_of_shift_release == 'Permanent') or (shift.type_of_shift_release=='Temporary')):
 			available_shifts.append(shift)
 	context = {
 		"available_shifts": available_shifts,

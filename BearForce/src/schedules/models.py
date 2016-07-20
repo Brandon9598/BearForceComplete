@@ -107,9 +107,22 @@ class Shift(models.Model):
 		default = PERMANENTSHIFT,
 	)
 
+	SHIFTS_RELEASE_SPECIFICATION = (
+		("null", "null"),
+		('Permanent', "Permanent shift release"),
+		('Temporary', "Temporary shift release"),
+	)
+
+	type_of_shift_release = models.CharField(
+		max_length=20,
+		choices = SHIFTS_RELEASE_SPECIFICATION,
+		default = "null",
+	)
+
 	release_reason = models.TextField(
 		default="Blank")
-	
+
+
 	release_shift_temp = False
 	release_shift_perm = False
 

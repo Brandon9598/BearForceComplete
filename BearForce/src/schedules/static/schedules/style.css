@@ -42,6 +42,10 @@ body {
 	background: black;
 }
 
+#dropdown-schedule {
+	background: black;
+}
+
 .navbar-fixed-side {
 	background-color: #DA5906;
 	margin-top: 20px;
@@ -90,6 +94,11 @@ body {
 	margin: 0px;
 	color: #C2C0C2;
 }
+
+.news_content {
+	margin-bottom: 4px;
+}
+
 .btn-default{
 	background-color: #DA5906;
 	color: black;
