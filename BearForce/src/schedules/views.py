@@ -17,8 +17,12 @@ def index(request):
 	#get_object_or_404
 	return render(request, 'schedules/index.html', context)
 
-def new_message(request):
-	return HttpResponse("Hello, new message view is working.")
+def messages(request):
+	bearforce_messages = News_Messages.objects.all()
+	context = {
+		"bearforce_messages": bearforce_messages,
+	}
+	return render(request, 'schedules/messages.html', context)
 	
 def shift_pick_up(request):
 	available_shifts = []

@@ -19,15 +19,14 @@ body {
 	background-color: white;
 }
 
+
 .navbar {
 	border-radius: 0px;
 }
 
 .navbar-inverse {
 	background-color: #E45D07;
-}
-
-.navbar-inverse {
+	margin: 0px;
 	color: white;
 }
 
@@ -52,7 +51,10 @@ body {
 
 .panel-default {
 	border-radius: 0px;
+	border: 0px;
 	margin-bottom: 4px;
+	margin-left: -2px;
+	margin-right: -2px;
 }
 
 .panel-default .panel-heading {
@@ -61,7 +63,7 @@ body {
 	border-radius: 0px;
 }
 
-.panel-default .panel-heading .badge {
+.badge {
 	background-color: black;
 }
 
@@ -76,9 +78,18 @@ body {
 
 #NewsMessages {
 	color: black;
+	margin-top: 18px;
 }
 
+#NewsMessagesHeading {
+	font-size: large;
+	text-align: center;
+}
 
+.date {
+	margin: 0px;
+	color: #C2C0C2;
+}
 .btn-default{
 	background-color: #DA5906;
 	color: black;

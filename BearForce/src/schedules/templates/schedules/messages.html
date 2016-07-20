@@ -1,11 +1,13 @@
-{% extends 'base.html' %}
+{% extends 'schedules/base.html' %}
 {% block body %}
 
 	<!-- Messaging content -->
-	<div class="container">
+	<div class="container-fluid">
 		<div class="row">
-			<div id="messages" class="col-md-8 text-center">
-				<h3>News and Messages</h3>
+			<div class="panel panel-default">
+				<div class="panel-heading">News and Messages</div>
+			</div>
+			<div id="messages" class="col-md-12">
 				{% for nm in bearforce_messages %}
 					<p> {{ nm }} </p>
 				{% endfor %}
