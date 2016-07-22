@@ -112,3 +112,11 @@ body {
 #available_shifts {
 	border: 0px;
 }
+
+.month {
+	text-align: center;
+}
+
+.sun, .mon, .tue, .wed, .thu, .fri, .sat {
+	padding: 10px;
+}

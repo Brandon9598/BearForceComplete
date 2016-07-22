@@ -1,0 +1,12 @@
+{% extends 'schedules/index.html' %}
+{% block calendar %}
+
+	{{ today_month = today.month }}
+	{{ today_day = today.day }}
+	{{ today_year = today.year }}
+	{{ print (user_calendar.formatmonth(today_year, today_month)) }}
+
+
+
+
+{% endblock %}

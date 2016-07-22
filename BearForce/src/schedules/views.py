@@ -1,4 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
+import datetime
+import calendar
+from .CustomHTMLCalendar import CustomHTMLCalendar
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.contrib import messages
 from .models import User, News_Messages, Shift
@@ -6,11 +9,14 @@ from .models import User, News_Messages, Shift
 # Create your views here.
 
 def index(request):
-	bearforce_worker = User.objects.get(pk=1)
-	shifts_to_work = bearforce_worker.shift_set.all()
+	today = datetime.date.today()
+	user_calendar = CustomHTMLCalendar(calendar.SUNDAY)
+	user_calendar = user_calendar.formatmonth(today.year, today.month)
 	bearforce_messages = News_Messages.objects.all()
 	context= {
-		"shifts_to_work": shifts_to_work,
+		#"today": today,
+		"user_calendar": user_calendar,
+		#"shifts_to_work": shifts_to_work,
 		"bearforce_worker": bearforce_worker,
 		"bearforce_messages": bearforce_messages,
 	}
