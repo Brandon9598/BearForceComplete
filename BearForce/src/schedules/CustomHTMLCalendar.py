@@ -6,20 +6,26 @@ from .models import User, News_Messages, Shift
 class CustomHTMLCalendar(HTMLCalendar):
     
     #information about bearforce worker
-    bearforce_worker = User.objects.get(pk=1)
-    shifts_to_work = bearforce_worker.shift_set.all()
+    
 
     # CSS classes for the day <td>s
     cssclasses = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]
  
     def formatday(self, date_row):
+        bearforce_worker = User.objects.get(pk=1)
+        shifts_to_work = bearforce_worker.shift_set.all()
         """
         Return a day as a table cell.
         """
         if date_row.month != self.month:
             return '<td class="noday">&nbsp;</td>' # day outside month
         else:
-            formatted_day = '<td class="%s">%d</td>' % (self.cssclasses[date_row.weekday()], date_row.day)
+            day_shifts = '<li class="work_date">'
+            for shift in shifts_to_work:
+                if shift.date.day == date_row.day:
+                    day_shifts = day_shifts + "<ul id='shift_specifics'>" + shift.working_location + " " + str(shift.time) + "</ul>"
+            day_shifts = day_shifts + "</li>"
+            formatted_day = '<td class="%s" id="numbered_date">%d\n %s</td>' % (self.cssclasses[date_row.weekday()], date_row.day, day_shifts)
             return formatted_day
 
  
@@ -34,13 +40,17 @@ class CustomHTMLCalendar(HTMLCalendar):
         """
         Return a formatted month as a table.
         """
+        special_week_header = '<tr id="special_week_header"><th class="sun">Sun</th><th class="mon">Mon</th><th class="tue">Tue</th><th class="wed">Wed</th><th class="thu">Thu</th><th class="fri">Fri</th><th class="sat">Sat</th></tr>'
+
         v = []
         a = v.append
         a('<table class="table table-bordered">')
         a('\n')
         a(self.formatmonthname(theyear, themonth, withyear=withyear))
         a('\n')
-        a(self.formatweekheader())
+        #a('<div id="weekheader">')
+        a(special_week_header)
+       # a('</div>')
         a('\n')
         dates = list(self.itermonthdates(theyear, themonth))
         self.month = themonth

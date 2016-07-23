@@ -9,6 +9,7 @@ from .models import User, News_Messages, Shift
 # Create your views here.
 
 def index(request):
+	bearforce_worker = User.objects.get(pk=1)
 	today = datetime.date.today()
 	user_calendar = CustomHTMLCalendar(calendar.SUNDAY)
 	user_calendar = user_calendar.formatmonth(today.year, today.month)

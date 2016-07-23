@@ -76,10 +76,10 @@ class Shift(models.Model):
 		default= SHIFT_PM_12,
 	)
 
-	BOXOFFICE = 'Box Office'
-	MAINDESK = 'Main Desk' 
-	FITNESSCENTER = "Fitness Center"
-	EQUIPMENTCHECKOUT = 'Equipment Checkout'
+	BOXOFFICE = 'BO'
+	MAINDESK = 'MD' 
+	FITNESSCENTER = "FC"
+	EQUIPMENTCHECKOUT = 'EC'
 	LOCATIONS_TO_WORK = (
 		(BOXOFFICE, "Box Office"),
 		(MAINDESK, "Main Desk"),
