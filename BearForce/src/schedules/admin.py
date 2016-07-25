@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import User, Shift, News_Messages
+from .models import Shift, News_Messages
 # Register your models here.
 
 class NewsMessagesModelAdmin(admin.ModelAdmin):
@@ -9,7 +9,6 @@ class NewsMessagesModelAdmin(admin.ModelAdmin):
 
     class Meta:
         model = News_Messages
-
-admin.site.register(User)
+        
 admin.site.register(Shift)
 admin.site.register(News_Messages, NewsMessagesModelAdmin)

@@ -4,7 +4,10 @@ import calendar
 from .CustomHTMLCalendar import CustomHTMLCalendar
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.contrib import messages
-from .models import User, News_Messages, Shift
+from .models import News_Messages, Shift
+from django.contrib.auth.models import User
+from django.views import generic
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 # Create your views here.
 
@@ -15,9 +18,7 @@ def index(request):
 	user_calendar = user_calendar.formatmonth(today.year, today.month)
 	bearforce_messages = News_Messages.objects.all()
 	context= {
-		#"today": today,
 		"user_calendar": user_calendar,
-		#"shifts_to_work": shifts_to_work,
 		"bearforce_worker": bearforce_worker,
 		"bearforce_messages": bearforce_messages,
 	}
@@ -50,8 +51,20 @@ def shift_release(request):
 	}
 	return render(request, 'schedules/release_schedules.html', context)
 
+def management_users(request):
+	bearforce_worker = User.objects.all()
+	context = {
+		"bearforce_worker": bearforce_worker,
+	}
+	return render(request, 'schedules/management_users.html', context)
+
+
 def staff(request):
 	return HttpResponse("Hello, staff view is working.")
 
 def account(request, user_id):
 	return HttpResponse("Hello, account view is wokring.")
+
+class UserCreate(CreateView):
+	model = User
+	fields = ['first_name', 'last_name', 'email', 'password', 'groups']

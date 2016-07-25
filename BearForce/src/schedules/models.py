@@ -1,18 +1,10 @@
 from django.db import models
 from django.utils import timezone
+from django.core.urlresolvers import reverse
 import datetime
+from django.contrib.auth.models import User
 
 # Create your models here.
-
-class User(models.Model):
-	first_name = models.CharField(max_length=50)
-	last_name = models.CharField(max_length=50)
-	phone_number = models.CharField(max_length=15)
-	email_address = models.EmailField(max_length=75)
-	weekly_hours = models.IntegerField()
-
-	def __str__(self):
-		return(self.first_name + " " + self.last_name)
 
 class News_Messages(models.Model):
 	user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -126,10 +118,12 @@ class Shift(models.Model):
 	release_shift_temp = False
 	release_shift_perm = False
 
+	def get_absolute_url(self):
+		return reverse('')
 	
 
 	def __str__(self):
 		#figure out what to return
-		return(self.user.first_name + " " + self.user.last_name + 
+		return(self.user.get_full_name() + 
 			" " + self.working_location + " " + self.time)
 	

@@ -9,9 +9,7 @@
 
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>	
-	<link rel="stylesheet" type="text/css" href={% static 'schedules/style.css' %}>
-	<link rel="stylesheet" type="text/css" href={% static 'schedules/calendar_style.css' %}>
-	<script src="{% static 'schedules/calendar.js' %}"></script>	
+	<link rel="stylesheet" type="text/css" href={% static 'schedules/style.css' %}>	
 	
 </head>
 <body>
@@ -41,6 +39,14 @@
 					
 					<li><a href="{% url 'messages' %}">Messages</a></li>
 					<li><a href="#">Staff</a></li>
+					<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Management<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Approve Shifts</a></li>
+							<li><a href="#">Messages</a></li>
+							<li><a href="{% url 'management' %}">Manage Users</a></li>
+						</ul>
+					</li>
 					<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Account<span class="caret"></span></a>
 						<ul class="dropdown-menu">

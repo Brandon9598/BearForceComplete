@@ -1,6 +1,7 @@
 import os, datetime
+from django.contrib.auth.models import User
 from calendar import HTMLCalendar
-from .models import User, News_Messages, Shift
+from .models import News_Messages, Shift
 
 
 class CustomHTMLCalendar(HTMLCalendar):
@@ -12,7 +13,7 @@ class CustomHTMLCalendar(HTMLCalendar):
     cssclasses = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]
  
     def formatday(self, date_row):
-        bearforce_worker = User.objects.get(pk=1)
+        bearforce_worker = User.objects.get(username="brandon9598")
         shifts_to_work = bearforce_worker.shift_set.all()
         """
         Return a day as a table cell.
